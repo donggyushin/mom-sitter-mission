@@ -66,7 +66,9 @@ export const removeStarredUser = (
       payload: sortedUsers,
     });
   } catch (err) {
-    return alert(err.message);
+    return alert(
+      "즐겨찾기에서 유저를 삭제하는데 실패하였습니다. 다시 시도해주세요. "
+    );
   }
 };
 
@@ -92,7 +94,9 @@ export const addStarredUser = (
       payload: sortedUsers,
     });
   } catch (err) {
-    return alert(err.message);
+    return alert(
+      "즐겨찾기에서 유저를 추가하는데 실패하였습니다. 다시 시도해주세요. "
+    );
   }
 };
 
