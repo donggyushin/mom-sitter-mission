@@ -1,0 +1,12 @@
+@import "../../constants/Styles.scss";
+.header__spelling__container {
+  background-color: $gray;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  span {
+    font-weight: bold;
+    color: black;
+  }
+}

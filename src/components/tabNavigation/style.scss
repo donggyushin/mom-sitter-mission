@@ -1,0 +1,21 @@
+@import "src/constants/Styles.scss";
+
+.tab__navigation__component {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid $gray;
+  .button {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .selected {
+    font-weight: bold;
+  }
+}

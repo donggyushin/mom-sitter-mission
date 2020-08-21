@@ -1,0 +1,12 @@
+.user__cell__container {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  img {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    margin-right: 10px;
+    margin-left: 4px;
+  }
+}

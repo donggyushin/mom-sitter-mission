@@ -1,0 +1,22 @@
+@import "src/constants/Styles.scss";
+
+.search__user__component {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .users__container {
+    width: 90%;
+    margin-top: 20px;
+    height: 80%;
+    overflow-y: scroll;
+  }
+}
