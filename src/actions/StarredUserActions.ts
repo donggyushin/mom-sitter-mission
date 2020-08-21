@@ -28,7 +28,7 @@ export const searchingStarredUser = (username: string) => (
   const existingStarredUsers = JSON.parse(starredUsersString) as UserType[];
 
   const searchedStarredUsers = existingStarredUsers.filter((user) =>
-    user.login.includes(username)
+    user.login.toLowerCase().includes(username.toLowerCase())
   );
 
   return dispatch({
