@@ -15,7 +15,6 @@ import { compareUser } from "../utils/Utils";
 
 export const searchingStarredUser = (username: string) => (
   dispatch: Dispatch<StarredUserDispatchType>
-  // getState: () => RootState
 ) => {
   if (username === "") {
     return dispatch({
@@ -27,8 +26,7 @@ export const searchingStarredUser = (username: string) => (
 
   if (!starredUsersString) return;
   const existingStarredUsers = JSON.parse(starredUsersString) as UserType[];
-  console.log("existingStarredUsers: ", existingStarredUsers);
-  // const existingStarredUsers = getState().StarredUserReducer.users;
+
   const searchedStarredUsers = existingStarredUsers.filter((user) => {
     console.log("user: ", user);
     return user.login.includes(username);
