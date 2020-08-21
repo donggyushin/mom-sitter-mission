@@ -56,12 +56,18 @@ export const removeStarredUser = (
     (user) => user.node_id !== userToRemove.node_id
   );
   const sortedUsers = updatedStarredUsers.sort(compareUser);
-  await localStorage.setItem(STARRED_USERS, JSON.stringify(sortedUsers));
-  dispatchToCallSearchingStarredUser(searchingStarredUser(previousSearchText));
-  return dispatch({
-    type: REMOVE_STARRED_USER,
-    payload: sortedUsers,
-  });
+  try {
+    await localStorage.setItem(STARRED_USERS, JSON.stringify(sortedUsers));
+    dispatchToCallSearchingStarredUser(
+      searchingStarredUser(previousSearchText)
+    );
+    return dispatch({
+      type: REMOVE_STARRED_USER,
+      payload: sortedUsers,
+    });
+  } catch (err) {
+    return alert(err.message);
+  }
 };
 
 export const addStarredUser = (
@@ -76,12 +82,18 @@ export const addStarredUser = (
   const existingStarredUsers = starredState.users;
   existingStarredUsers.push(user);
   const sortedUsers = existingStarredUsers.sort(compareUser);
-  await localStorage.setItem(STARRED_USERS, JSON.stringify(sortedUsers));
-  dispatchToCallSearchingStarredUser(searchingStarredUser(previousSearchText));
-  return dispatch({
-    type: ADD_STARRED_USER,
-    payload: sortedUsers,
-  });
+  try {
+    await localStorage.setItem(STARRED_USERS, JSON.stringify(sortedUsers));
+    dispatchToCallSearchingStarredUser(
+      searchingStarredUser(previousSearchText)
+    );
+    return dispatch({
+      type: ADD_STARRED_USER,
+      payload: sortedUsers,
+    });
+  } catch (err) {
+    return alert(err.message);
+  }
 };
 
 export const fetchingStarredUsers = () => (
