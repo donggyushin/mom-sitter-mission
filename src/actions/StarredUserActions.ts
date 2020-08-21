@@ -27,11 +27,10 @@ export const searchingStarredUser = (username: string) => (
   if (!starredUsersString) return;
   const existingStarredUsers = JSON.parse(starredUsersString) as UserType[];
 
-  const searchedStarredUsers = existingStarredUsers.filter((user) => {
-    console.log("user: ", user);
-    return user.login.includes(username);
-  });
-  console.log("searchedStarredUsers: ", searchedStarredUsers);
+  const searchedStarredUsers = existingStarredUsers.filter((user) =>
+    user.login.includes(username)
+  );
+
   return dispatch({
     type: SEARCHING_STARRED_USER,
     payload: {
