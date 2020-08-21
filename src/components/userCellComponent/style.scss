@@ -2,11 +2,17 @@
   display: flex;
   align-items: center;
   height: 50px;
+  position: relative;
   img {
     width: 30px;
     height: 30px;
     border-radius: 8px;
     margin-right: 10px;
     margin-left: 4px;
+  }
+
+  .star {
+    position: absolute;
+    right: 20px;
   }
 }

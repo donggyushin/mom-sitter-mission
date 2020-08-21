@@ -1,16 +1,28 @@
 import "./style.scss";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { LocationType } from "./types/Types";
 import SearchUserComponent from "./components/searchUserComponent/SearchUserComponent";
 import StarredUserComponent from "./components/starredUsersComponent/StarredUserComponent";
 import TabNavigationComponent from "./components/tabNavigation/TabNavigation";
+import { fetchingStarredUsers } from "./actions/StarredUserActions";
+import { useDispatch } from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
+
   const [currentLocation, setCurrentLocation] = useState<LocationType>(
     "search"
   );
+
+  useEffect(() => {
+    callFetchingStarredUsers();
+  }, []);
+
+  const callFetchingStarredUsers = () => {
+    dispatch(fetchingStarredUsers());
+  };
 
   const switchToSearchComponent = () => {
     setCurrentLocation("search");
