@@ -21,7 +21,7 @@ export const searchingStarredUser = (username: string) => (
       type: STOP_SEARCHING_MODE,
     });
   }
-  console.log("이거 호출되는지 확인");
+
   const starredUsersString = localStorage.getItem(STARRED_USERS);
 
   if (!starredUsersString) return;
