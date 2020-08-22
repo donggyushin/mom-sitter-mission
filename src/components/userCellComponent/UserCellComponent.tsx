@@ -25,7 +25,7 @@ const UserCellComponent: React.FunctionComponent<Props> = ({ user }) => {
 
   useEffect(() => {
     checkStarred();
-  }, []);
+  });
 
   const stareTrue = () => {
     setStarred(true);
