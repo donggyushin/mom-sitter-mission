@@ -5,6 +5,8 @@
 import {
   SEARCHING_USER_FAIL,
   SEARCHING_USER_SUCCESS,
+  USER_LOADING_FALSE,
+  USER_LOADING_TRUE,
   UserDispatchType,
   UserType,
 } from "../actions/UserActionTypes";
@@ -15,12 +17,14 @@ interface InitialState {
   success: boolean;
   users: UserType[];
   sortedUsers: UserType[];
+  loading: boolean;
 }
 
 const intiailState: InitialState = {
   success: true,
   users: [],
   sortedUsers: [],
+  loading: false,
 };
 
 const UserReducer = (
@@ -32,9 +36,35 @@ const UserReducer = (
       return searchUserFail(state, action);
     case SEARCHING_USER_SUCCESS:
       return searchUserSuccess(state, action);
+    case USER_LOADING_TRUE:
+      return loadingTrue(state, action);
+    case USER_LOADING_FALSE:
+      return loadingFalse(state, action);
     default:
       return state;
   }
+};
+
+const loadingTrue = (
+  state: InitialState,
+  action: UserDispatchType
+): InitialState => {
+  if (USER_LOADING_TRUE !== action.type) return state;
+  return {
+    ...state,
+    loading: true,
+  };
+};
+
+const loadingFalse = (
+  state: InitialState,
+  action: UserDispatchType
+): InitialState => {
+  if (USER_LOADING_FALSE !== action.type) return state;
+  return {
+    ...state,
+    loading: false,
+  };
 };
 
 const searchUserSuccess = (

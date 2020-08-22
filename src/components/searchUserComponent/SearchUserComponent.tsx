@@ -4,6 +4,7 @@ import { Button, TextField } from "@material-ui/core";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import Loader from "react-loader-spinner";
 import { RootState } from "../../Store";
 import UserListComponent from "../userListComponent/UserListComponent";
 import { searchUsersWithName } from "../../actions/UserActions";
@@ -25,6 +26,12 @@ const SearchUserComponent = () => {
     dispatch(searchUsersWithName(userName));
   };
 
+  const enterKeyPressed = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter") {
+      callSearchUserDispatchAction();
+    }
+  };
+
   return (
     <div className="search__user__component">
       <div
@@ -36,6 +43,7 @@ const SearchUserComponent = () => {
         <TextField
           id="outlined-basic"
           label="깃허브 유저명"
+          onKeyUp={enterKeyPressed}
           onChange={handleUserName}
           value={userName}
           style={{
@@ -52,7 +60,17 @@ const SearchUserComponent = () => {
           검색하기
         </Button>
       </div>
-      <UserListComponent userList={userState.sortedUsers} />
+      {userState.loading ? (
+        <div
+          style={{
+            marginTop: 50,
+          }}
+        >
+          Loading...
+        </div>
+      ) : (
+        <UserListComponent userList={userState.sortedUsers} />
+      )}
     </div>
   );
 };

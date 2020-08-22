@@ -4,6 +4,8 @@
 
 export const SEARCHING_USER_SUCCESS = "SEARCHING_USER_SUCCESS";
 export const SEARCHING_USER_FAIL = "SEARCHING_USER_FAIL";
+export const USER_LOADING_TRUE = "USER_LOADING_TRUE";
+export const USER_LOADING_FALSE = "USER_LOADING_FALSE";
 
 export type UserType = {
   login: string;
@@ -36,4 +38,16 @@ export interface SearchingUserSuccess {
   payload: UserType[];
 }
 
-export type UserDispatchType = SearchingUserFail | SearchingUserSuccess;
+export interface LoadingTrueUser {
+  type: typeof USER_LOADING_TRUE;
+}
+
+export interface LoadingFalseIser {
+  type: typeof USER_LOADING_FALSE;
+}
+
+export type UserDispatchType =
+  | SearchingUserFail
+  | SearchingUserSuccess
+  | LoadingTrueUser
+  | LoadingFalseIser;

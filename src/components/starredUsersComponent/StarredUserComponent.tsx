@@ -27,6 +27,12 @@ const StarredUserComponent = () => {
     dispatch(searchingStarredUser(userName));
   };
 
+  const enterPressed = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter") {
+      callSearchingStarredUsers();
+    }
+  };
+
   return (
     <div className="starred__user__component">
       <div
@@ -38,6 +44,7 @@ const StarredUserComponent = () => {
         <TextField
           id="outlined-basic"
           label="유저이름"
+          onKeyUp={enterPressed}
           onChange={handleUserName}
           value={userName}
           style={{
