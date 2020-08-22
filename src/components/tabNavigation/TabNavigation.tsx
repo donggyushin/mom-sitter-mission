@@ -24,13 +24,13 @@ const TabNavigationComponent: React.FunctionComponent<Props> = ({
           borderRight: `1px solid ${COLORS.gray}`,
         }}
       >
-        Search
+        검색
       </div>
       <div
         onClick={switchToStarred}
         className={`button ${currentLocation === "starred" && "selected"}`}
       >
-        Starred
+        즐겨찾기
       </div>
     </div>
   );

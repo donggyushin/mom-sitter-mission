@@ -35,7 +35,7 @@ const SearchUserComponent = () => {
       >
         <TextField
           id="outlined-basic"
-          label="Outlined"
+          label="깃허브 유저명"
           onChange={handleUserName}
           value={userName}
           style={{
@@ -49,7 +49,7 @@ const SearchUserComponent = () => {
           variant="contained"
           color="primary"
         >
-          Search
+          검색하기
         </Button>
       </div>
       <UserListComponent userList={userState.sortedUsers} />

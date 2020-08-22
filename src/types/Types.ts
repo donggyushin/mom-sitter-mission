@@ -1,1 +1,1 @@
-export type LocationType = 'search' | 'starred'
+export type LocationType = "search" | "starred";

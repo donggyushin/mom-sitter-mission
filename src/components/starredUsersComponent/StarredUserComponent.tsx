@@ -37,7 +37,7 @@ const StarredUserComponent = () => {
       >
         <TextField
           id="outlined-basic"
-          label="Outlined"
+          label="유저이름"
           onChange={handleUserName}
           value={userName}
           style={{
@@ -51,7 +51,7 @@ const StarredUserComponent = () => {
           variant="contained"
           color="primary"
         >
-          Search
+          {userName.length === 0 ? "모든유저" : "검색"}
         </Button>
       </div>
       {/* 
