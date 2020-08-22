@@ -15,7 +15,8 @@ import { compareUser } from "../utils/Utils";
 
 // 즐겨찾기내에서 원하는 유저를 검색해주는 함수
 export const searchingStarredUser = (username: string) => (
-  dispatch: Dispatch<StarredUserDispatchType>
+  dispatch: Dispatch<StarredUserDispatchType>,
+  getState: () => RootState
 ) => {
   // 즐겨찾기에 등록된 유저들내에서 검색을 하는 코드입니다. 만약에 공백 문자열로 검색이 이루어지게 될 시
   // 검색모드가 취소되어서 모든 즐겨찾기에 등록된 유저들을 보여주게 됩니다.
@@ -24,14 +25,13 @@ export const searchingStarredUser = (username: string) => (
       type: STOP_SEARCHING_MODE,
     });
   }
-
   const starredUsersString = localStorage.getItem(STARRED_USERS);
-
   if (!starredUsersString) return;
-  const existingStarredUsers = JSON.parse(starredUsersString) as UserType[];
+  const starredUsers = JSON.parse(starredUsersString) as UserType[];
+
   // 검색어를 기반으로 즐겨찾기에 등록된 유저들을 검색합니다.
   // 대소문자에 구분없이 검색가능하게 하기 위해서 모두 lowerCase로 변환 후 비교하였습니다.
-  const searchedStarredUsers = existingStarredUsers.filter((user) =>
+  const searchedStarredUsers = starredUsers.filter((user) =>
     user.login.toLowerCase().includes(username.toLowerCase())
   );
 
@@ -52,10 +52,9 @@ export const removeStarredUser = (
   dispatch: Dispatch<StarredUserDispatchType>,
   getState: () => RootState
 ) => {
-  const starredState = getState().StarredUserReducer;
   const previousSearchText = getState().StarredUserReducer.previousSearchText;
 
-  const existingStarredUsers = starredState.users;
+  const existingStarredUsers = getState().StarredUserReducer.users;
 
   const updatedStarredUsers = existingStarredUsers.filter(
     (user) => user.node_id !== userToRemove.node_id
@@ -89,9 +88,8 @@ export const addStarredUser = (
   dispatch: Dispatch<StarredUserDispatchType>,
   getState: () => RootState
 ) => {
-  const starredState = getState().StarredUserReducer;
   const previousSearchText = getState().StarredUserReducer.previousSearchText;
-  const existingStarredUsers = starredState.users;
+  const existingStarredUsers = getState().StarredUserReducer.users;
   existingStarredUsers.push(user);
   const sortedUsers = existingStarredUsers.sort(compareUser);
   try {
