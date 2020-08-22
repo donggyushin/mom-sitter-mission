@@ -25,7 +25,7 @@ const UserCellComponent: React.FunctionComponent<Props> = ({ user }) => {
 
   useEffect(() => {
     checkStarred();
-  }, []);
+  });
 
   const toggleStarred = () => {
     setStarred(!starred);
@@ -39,9 +39,7 @@ const UserCellComponent: React.FunctionComponent<Props> = ({ user }) => {
   };
 
   const checkStarred = () => {
-    const starredUsers = starredUserState.users;
-
-    starredUsers.map((starredUser) => {
+    starredUserState.users.map((starredUser) => {
       if (starredUser.node_id === user.node_id) {
         setStarred(true);
       }
