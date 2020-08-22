@@ -25,17 +25,17 @@ const UserCellComponent: React.FunctionComponent<Props> = ({ user }) => {
 
   useEffect(() => {
     checkStarred();
-  });
+  }, []);
 
-  const toggleStarred = () => {
-    setStarred(!starred);
-    if (starred) {
-      // 해당 유저가 즐겨찾기에 등록된 유저일때 즐겨찾기에서 제거하는 함수를 호출해야함
-      dispatch(removeStarredUser(user, dispatch));
-    } else {
-      // 해당 유저가 즐겨찾기에 등록되지 않은 유저일때 즐겨찾기에서 추가하는 함수를 호출해야함
-      dispatch(addStarredUser(user, dispatch));
-    }
+  const stareTrue = () => {
+    setStarred(true);
+    dispatch(addStarredUser(user, dispatch));
+  };
+
+  const stareFalse = () => {
+    setStarred(false);
+
+    dispatch(removeStarredUser(user, dispatch));
   };
 
   const checkStarred = () => {
@@ -52,13 +52,13 @@ const UserCellComponent: React.FunctionComponent<Props> = ({ user }) => {
       <div>{user.login}</div>
       {starred ? (
         <img
-          onClick={toggleStarred}
+          onClick={stareFalse}
           className={"star"}
           src={require("../../assets/star.png")}
         />
       ) : (
         <img
-          onClick={toggleStarred}
+          onClick={stareTrue}
           className={"star"}
           src={require("../../assets/emptyStar.png")}
         />
