@@ -54,6 +54,10 @@ const StarredUserComponent = () => {
           Search
         </Button>
       </div>
+      {/* 
+      기본적으로는 즐겨찾기에 등록된 모든 유저들을 보여줍니다. 
+      하지만 검색모드일 경우에는 검색 조건에 해당하는 유저들만을 보여줍니다. 
+      */}
       {starredUserState.searchMode ? (
         <UserListComponent userList={starredUserState.searchedUsers} />
       ) : (

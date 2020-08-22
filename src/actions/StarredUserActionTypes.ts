@@ -1,3 +1,7 @@
+/**
+ * 이 파일에는 StarredUser 리듀서의 액션을 관리하는 타입들을 적었습니다.
+ */
+
 import { UserType } from "./UserActionTypes";
 
 export const FETCHING_STARRED_USER_SUCCESS = "FETCHING_STARRED_USER_SUCCESS";

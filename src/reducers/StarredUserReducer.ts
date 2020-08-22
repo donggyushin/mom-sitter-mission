@@ -1,3 +1,7 @@
+/**
+ * 즐겨찾기에 등록된 유저들의 상태를 관리하는 리듀서
+ */
+
 import {
   ADD_STARRED_USER,
   FETCHING_STARRED_USER_SUCCESS,

@@ -8,6 +8,7 @@ import {
 import { Dispatch } from "redux";
 import axios from "axios";
 
+// Github user api로부터 최대 100명까지의 유저를 검색해주는 함수입니다.
 export const searchUsersWithName = (name: string) => async (
   dispatch: Dispatch<UserDispatchType>
 ) => {

@@ -1,3 +1,7 @@
+/**
+ * 깃허브에서 불러온 유저데이터를 관리하는 리듀서
+ */
+
 import {
   SEARCHING_USER_FAIL,
   SEARCHING_USER_SUCCESS,

@@ -1,3 +1,7 @@
+/**
+ * 이 파일에는 User 리듀서의 액션을 관리하는 타입들을 적었습니다.
+ */
+
 export const SEARCHING_USER_SUCCESS = "SEARCHING_USER_SUCCESS";
 export const SEARCHING_USER_FAIL = "SEARCHING_USER_FAIL";
 
