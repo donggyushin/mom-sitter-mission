@@ -53,7 +53,6 @@ export const removeStarredUser = (
   getState: () => RootState
 ) => {
   const previousSearchText = getState().StarredUserReducer.previousSearchText;
-
   const existingStarredUsers = getState().StarredUserReducer.users;
 
   const updatedStarredUsers = existingStarredUsers.filter(
@@ -61,14 +60,13 @@ export const removeStarredUser = (
   );
   const sortedUsers = updatedStarredUsers.sort(compareUser);
 
-  // 이곳에서 searchingStarredUser 메서드를 다시 호출하는 이유는
-  // 즐겨찾기에서 유저를 빼낼때, 즐겨찾기 탭에서 보여지는 데이터도 함께
-  // 최신화 되길 원하기 때문입니다.
-
   dispatch({
     type: REMOVE_STARRED_USER,
     payload: sortedUsers,
   });
+  // 이곳에서 searchingStarredUser 메서드를 다시 호출하는 이유는
+  // 즐겨찾기에서 유저를 빼낼때, 즐겨찾기 탭에서 보여지는 데이터도 함께
+  // 최신화 되길 원하기 때문입니다.
   dispatchToCallSearchingStarredUser(searchingStarredUser(previousSearchText));
   localStorage.setItem(STARRED_USERS, JSON.stringify(sortedUsers));
 };
@@ -86,14 +84,13 @@ export const addStarredUser = (
   existingStarredUsers.push(user);
   const sortedUsers = existingStarredUsers.sort(compareUser);
 
-  // 이곳에서 searchingStarredUser 메서드를 다시 호출하는 이유는
-  // 즐겨찾기에서 유저를 추가할때, 즐겨찾기 탭에서 보여지는 데이터도 함께
-  // 최신화 되길 원하기 때문입니다.
-
   dispatch({
     type: ADD_STARRED_USER,
     payload: sortedUsers,
   });
+  // 이곳에서 searchingStarredUser 메서드를 다시 호출하는 이유는
+  // 즐겨찾기에서 유저를 추가할때, 즐겨찾기 탭에서 보여지는 데이터도 함께
+  // 최신화 되길 원하기 때문입니다.
   dispatchToCallSearchingStarredUser(searchingStarredUser(previousSearchText));
   localStorage.setItem(STARRED_USERS, JSON.stringify(sortedUsers));
 };
